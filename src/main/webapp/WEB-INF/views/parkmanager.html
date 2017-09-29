@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>停车场管理员管理界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resource/lib/css/select2.min.css">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="/resource/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/themes/flat-blue.css">
+</head>
+
+
+<body class="flat-blue">
+<div class="app-container">
+    <div class="row content-container">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-expand-toggle">
+                        <i class="fa fa-bars icon"></i>
+                    </button>
+                    <ol class="breadcrumb navbar-breadcrumb">
+                        <li class="active">后台管理</li>
+                    </ol>
+                    <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                        <i class="fa fa-th icon"></i>
+                    </button>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown profile">
+                            <a id="tabName" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">你的用户名 <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="/resource/img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username" id="tabAdminName">你的用户名</h4>
+                                        <div class="btn-group margin-bottom-2x"> <!-- role="group"-->
+                                            <!--<button type="button" class="btn btn-default"><i class="fa fa-user"></i> 我的</button>-->
+                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> 退出</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="side-menu sidebar-inverse">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="side-menu-container">
+                    <div class="navbar-header">
+                        <div class="navbar-brand">
+                            <div class="icon fa fa-paper-plane"></div>
+                            <div class="title">欢迎使用本平台</div>
+                        </div>
+                        <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/toIndex">
+                                <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
+                            </a>
+                        </li>
+
+
+                        <li class="panel panel-default dropdown active">
+                            <a data-toggle="collapse" href="#dropdown-user">
+                                <span class="icon fa fa-desktop"></span><span class="title">用户管理</span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-user" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/toUser">普通用户管理</a>
+                                        </li>
+                                        <li><a href="/toParkmanager">停车场管理员管理</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-order">
+                                <span class="icon fa fa-file-text-o"></span><span class="title">订单管理</span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-order" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/toOrders">已完成订单</a>
+                                        </li>
+                                        <li><a href="/toGenerate">可共享车位</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-parking">
+                                <span class="icon fa fa-archive"></span><span class="title">停车场管理</span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-parking" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/toParking">查看停车场</a>
+                                        </li>
+                                        <li><a href="/toNewParking">新增停车场</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/toParkinglot">
+                                <span class="icon fa fa-table"></span><span class="title">查看车位</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/toLicense">
+                                <span class="icon fa fa-thumbs-o-up"></span><span class="title">关于</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="container-fluid">
+            <div class="side-body">
+                <div class="page-title">
+                    <span class="title">停车场管理员管理</span>
+                    <div class="description">查看当前已存在的停车场管理员的账号信息</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="title">停车场管理员列表</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="display" cellspacing="0" width="100%"  id="table_id">
+                                    <thead>
+                                    <tr>
+                                        <th data-visible="false">id</th>
+                                        <th>管理员账号</th>
+                                        <th>管理员密码</th>
+                                        <th>管理员所属停车场</th>
+                                        <th>管理员创建时间</th>
+                                        <th>管理员最后登录时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th data-visible="false">id</th>
+                                        <th>管理员账号</th>
+                                        <th>管理员密码</th>
+                                        <th>管理员所属停车场</th>
+                                        <th>管理员创建时间</th>
+                                        <th>管理员最后登录时间</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>780QQ</td>
+                                        <td>我的微信</td>
+                                        <td>林秋培</td>
+                                        <td>2008/11/28</td>
+                                        <td>2017/9/9</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>3</td>
+                                        <td>778808</td>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>2008/11/28</td>
+                                        <td>2008/11/28</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Q7078</td>
+                                        <td>我的微信</td>
+                                        <td>林秋培</td>
+                                        <td>2008/11/28</td>
+                                        <td>2017/9/9</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>6</td>
+                                        <td>780788</td>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>2008/11/28</td>
+                                        <td>2008/11/28</td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal）-->
+    <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" style="width: 800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="demoModalLabel">新增停车场管理员</h4>
+                </div>
+                <div class="modal-body" style="height: 320px;">
+                    <form action="" method="post" id="userForm">
+                        用户名&nbsp;：<input type="text" name="username"/><br/><br/>
+                        &nbsp;密&nbsp;码&nbsp;&nbsp;：<input type="text" name="password"/><br/><br/>
+                        所属停车场&nbsp;：<input type="text" name="stopping"/><br/><br/>
+                    </form>
+                </div><!-- /.modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="container">
+        <div class="modal fade login" id="passwordModal">
+            <div class="modal-dialog animated">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><b>修改</b>管理员信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box">
+                            <div class="content">
+                                <div class="error"></div>
+                                <div class="form">
+                                    <form method="post" action="" accept-charset="UTF-8">
+                                        <input id="password1" class="form-control" type="text" placeholder="请输入密码" name="password1">
+                                        <input id="password2" class="form-control" type="text" placeholder="请输入密码" name="password2">
+                                        <input class="btn btn-login" type="button" value="修改" onclick="changeAjax()">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="modal fade login" id="deleteModal" >
+            <div class="modal-dialog animated">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"><b>确定删除信息？</b></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary btn-danger" onclick="deleteAjax()">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="app-footer">
+        <div class="wrapper">
+            <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+        </div>
+    </footer>
+    </div>
+</body>
+<!-- Javascript Libs -->
+<script type="text/javascript" src="/resource/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/Chart.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/bootstrap-switch.min.js"></script>
+
+<script type="text/javascript" src="/resource/lib/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/select2.full.min.js"></script>
+<script type="text/javascript" src="/resource/lib/js/ace/ace.js"></script>
+<script type="text/javascript" src="/resource/lib/js/ace/mode-html.js"></script>
+<script type="text/javascript" src="/resource/lib/js/ace/theme-github.js"></script>
+<!-- Javascript -->
+<script type="text/javascript" src="/resource/js/app.js"></script>
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#table_id').DataTable({
+            //这样配置后，即可用DT的API来访问表格数据
+            //要求数据列和实际列数量一致
+            columns: [
+                {data:"id"},
+                {data:"username"},
+                {data:"password"},
+                {data:"parkinglot"},
+                {data:"createTime"},
+                {data:"lastTime"}
+            ]
+        });
+
+        //给行绑定选中事件
+        /* $('#table_id tbody').on( 'click', 'tr', function () {
+         if ($(this).hasClass('selected')) {
+         $(this).removeClass('selected');
+         $(this).find('td:last').html("");
+         }
+         else {
+         table.$('tr.selected').removeClass('selected');
+         $(this).addClass('selected');
+         var column0 = table.row('.selected').data().id;
+         // var column1 = table.row('.selected').data().wxId;
+         // var column2 = table.row('.selected').data().wxName;
+         // var column3 = table.row('.selected').data().name;
+         // var column4 = table.row('.selected').data().age;
+         // var column5 = table.row('.selected').data().phone;
+         // var column6 = table.row('.selected').data().carNum;
+         // var column7 = table.row('.selected').data().createTime;
+         // var column8 = table.row('.selected').data().lastTime;
+
+         var tr= $(
+         "<button type='button' class='btn-xs btn btn-warning' onclick='upd("+column0+")'>"+"修改"+"</button>"+
+         "<button type='button' class='btn-xs btn btn-danger' onclick='del("+column0+")'>"+"删除"+"</button>"
+         );
+         $(this).find('td:last').html(tr);
+         }
+         } );*/
+    } )
+
+    function changePassword(){
+        setTimeout(function(){
+            $('#passwordModal').modal('show');
+        }, 230);
+    }
+
+
+    function changeAjax(){
+        /*   Remove this comments when moving to server
+         $.post( "/login", function( data ) {
+         if(data == 1){
+         window.location.replace("/home");
+         } else {
+         shakeModal();
+         }
+         });
+         */
+
+        /*   Simulate error message from the server   */
+        if($('#password1').val()=="" || $('#password2').val()=="") {
+            shakeModalnull();
+        }
+        else if($('#password1').val()!=$('#password2').val()) {
+            shakeModalnot();
+        }
+    }
+
+    function shakeModalnull(){
+        $('#passwordModal .modal-dialog').addClass('shake');
+        $('.error').addClass('alert alert-danger').html("密码不能为空！");
+        $('#password1').val('');
+        $('#password2').val('');
+        setTimeout( function(){
+            $('#passwordModal .modal-dialog').removeClass('shake');
+        }, 1000 );
+    }
+
+    function shakeModalnot(){
+        $('#passwordModal .modal-dialog').addClass('shake');
+        $('.error').addClass('alert alert-danger').html("输入密码不一致！");
+        $('#password1').val('');
+        $('#password2').val('');
+        setTimeout( function(){
+            $('#passwordModal .modal-dialog').removeClass('shake');
+        }, 1000 );
+    }
+
+    function deleteMessage(){
+        setTimeout(function(){
+            $('#deleteModal').modal('show');
+        },200);
+
+    }
+
+    function deleteAjax(){
+        /*   Remove this comments when moving to server
+         $.post( "/login", function( data ) {
+         if(data == 1){
+         window.location.replace("/home");
+         } else {
+         shakeModal();
+         }
+         });
+         */
+
+        /*   Simulate error message from the server   */
+
+        var adminName=$("input[name='username']").val()
+        $.ajax({
+            type:"post",
+            url:"/deleteAdmin/",
+            data:{adminName:adminName},
+            succes : function(data){
+                if(data.error=="删除管理员成功"){
+                    alert("删除管理员成功")
+                }
+            }
+        });
+    }
+</script>
+
+<script>
+    $(function(){
+        function initTable() {
+            var $tbr = $('table tbody tr');
+            var $changeBtn = $('<td><button class="btn btn-primary btn-xs" onclick="changePassword()"><i class="fa fa-pencil"></i></button></td>');
+            var $deleteBtn = $('<td><button class="btn btn-danger btn-xs" onclick="deleteMessage()"><i class="fa fa-trash-o "></i></button></td>');
+            /*每一行都在最前面插入一个选中复选框的单元格*/
+            $tbr.append($changeBtn);
+            $tbr.append($deleteBtn);
+        }
+        initTable();
+    });
+</script>
+</html>

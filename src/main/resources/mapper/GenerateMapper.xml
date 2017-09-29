@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.front.dao.GenerateMapper" >
+  <resultMap id="BaseResultMap" type="com.front.entity.Generate" >
+    <constructor >
+      <idArg column="generate_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="parkinglot_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="generate_share_begin" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="generate_share_end" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="generate_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="generate_status" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    generate_id, parkinglot_id, generate_share_begin, generate_share_end, generate_price, 
+    generate_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from generate
+    where generate_id = #{generateId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from generate
+    where generate_id = #{generateId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.front.entity.Generate" >
+    insert into generate (generate_id, parkinglot_id, generate_share_begin, 
+      generate_share_end, generate_price, generate_status
+      )
+    values (#{generateId,jdbcType=BIGINT}, #{parkinglotId,jdbcType=BIGINT}, #{generateShareBegin,jdbcType=TIMESTAMP}, 
+      #{generateShareEnd,jdbcType=TIMESTAMP}, #{generatePrice,jdbcType=DECIMAL}, #{generateStatus,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.front.entity.Generate" >
+    insert into generate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="generateId != null" >
+        generate_id,
+      </if>
+      <if test="parkinglotId != null" >
+        parkinglot_id,
+      </if>
+      <if test="generateShareBegin != null" >
+        generate_share_begin,
+      </if>
+      <if test="generateShareEnd != null" >
+        generate_share_end,
+      </if>
+      <if test="generatePrice != null" >
+        generate_price,
+      </if>
+      <if test="generateStatus != null" >
+        generate_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="generateId != null" >
+        #{generateId,jdbcType=BIGINT},
+      </if>
+      <if test="parkinglotId != null" >
+        #{parkinglotId,jdbcType=BIGINT},
+      </if>
+      <if test="generateShareBegin != null" >
+        #{generateShareBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generateShareEnd != null" >
+        #{generateShareEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generatePrice != null" >
+        #{generatePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="generateStatus != null" >
+        #{generateStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.front.entity.Generate" >
+    update generate
+    <set >
+      <if test="parkinglotId != null" >
+        parkinglot_id = #{parkinglotId,jdbcType=BIGINT},
+      </if>
+      <if test="generateShareBegin != null" >
+        generate_share_begin = #{generateShareBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generateShareEnd != null" >
+        generate_share_end = #{generateShareEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generatePrice != null" >
+        generate_price = #{generatePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="generateStatus != null" >
+        generate_status = #{generateStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where generate_id = #{generateId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.front.entity.Generate" >
+    update generate
+    set parkinglot_id = #{parkinglotId,jdbcType=BIGINT},
+      generate_share_begin = #{generateShareBegin,jdbcType=TIMESTAMP},
+      generate_share_end = #{generateShareEnd,jdbcType=TIMESTAMP},
+      generate_price = #{generatePrice,jdbcType=DECIMAL},
+      generate_status = #{generateStatus,jdbcType=CHAR}
+    where generate_id = #{generateId,jdbcType=BIGINT}
+  </update>
+</mapper>
